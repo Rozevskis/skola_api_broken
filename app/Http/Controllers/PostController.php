@@ -20,8 +20,8 @@ class PostController extends Controller implements HasMiddleware
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return Post()->all();
+    {   
+        return Post::all();
     }
 
     /**
