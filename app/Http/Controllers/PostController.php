@@ -24,19 +24,14 @@ class PostController extends Controller implements HasMiddleware
         return Post::all();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $fields = $request->validate([
             'title' => 'required|max:255',
             'body' => 'required',
-            'password' => 'required'
         ]);
 
-        $post = Post::create($fields);
-
+        $post = $request->user()->posts()->create($fields);
         return $post;
     }
 
